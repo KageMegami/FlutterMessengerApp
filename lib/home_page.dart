@@ -51,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
       if (message.data["type"] == "friend" ) {
         context.read<ServerConnect>().getUserConversations();
+        context.read<ServerConnect>().getUserFriends();
       }
       if (message.data["type"] == "friendRequest" ) {
         context.read<ServerConnect>().getFriendRequest();
