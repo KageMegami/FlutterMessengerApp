@@ -219,7 +219,7 @@ class _MyConversationPageState extends State<MyConversationPage> {
                             const Duration(milliseconds: 575), () => _controller.jumpTo(_controller.position.maxScrollExtent));
                       },
                       onChanged: _onMessage,
-                      maxLength: 29,
+                      maxLength: 24,
                       controller: msgController,
                       //autofocus: true,
                       decoration: const InputDecoration(
