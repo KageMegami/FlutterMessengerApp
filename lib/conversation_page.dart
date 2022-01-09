@@ -128,7 +128,10 @@ class _MyConversationPageState extends State<MyConversationPage> {
   }
 
   Widget getProfilePicture(index) {
-    User user = context.read<ServerConnect>().friends.firstWhere((element) => element.id == context.read<ServerConnect>().messages[conversation.id]![index].senderId);
+    User user = context.read<ServerConnect>().friends.firstWhere((element) => element.id == context.read<ServerConnect>().messages[conversation.id]![index].senderId, orElse: () => User("", "", "", "", ""));
+    if (user.urlPicture.isEmpty) {
+      return Image.asset("images/default_picture.jpg");
+    }
     return Image.network(user.urlPicture, height: 40.0, width: 40.0);
   }
 

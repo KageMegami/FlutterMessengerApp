@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
       FirebaseAuth.instance.userChanges().listen((User? user) async {
         if (user == null) {
           context.read<ServerConnect>().clear();
-          Navigator.of(context).pushNamed('/login').then((value) => _loadUserData(context));
+          Navigator.of(context).pushNamed('/login');
         } else {
           final idToken = await user.getIdToken();
           context.read<ServerConnect>().setToken(idToken);

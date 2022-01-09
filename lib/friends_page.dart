@@ -62,7 +62,7 @@ class _MyFriendsPageState extends State<MyFriendsPage> {
                             top: 25,
                             left: 45,
                             child: Text(
-                              context.watch()<ServerConnect>().friendRequests[index].user.firstName + " " + context.watch()<ServerConnect>().friendRequests[index].user.lastName,
+                              context.watch<ServerConnect>().friendRequests[index].user.firstName + " " + context.watch<ServerConnect>().friendRequests[index].user.lastName,
                               style: const TextStyle(color: Colors.black),
                             ),
                           ),
@@ -73,9 +73,11 @@ class _MyFriendsPageState extends State<MyFriendsPage> {
                           InkWell(
                             onTap: () {
                               context.read<ServerConnect>().answerFriendRequest(context.read<ServerConnect>().friendRequests[index].id, "true");
-                              context.read<ServerConnect>().getUserConversations();
-                              context.read<ServerConnect>().getUserFriends();
-                              context.read<ServerConnect>().getFriendRequest();
+                              Future.delayed(const Duration(seconds: 1), () {
+                                context.read<ServerConnect>().getUserConversations();
+                                context.read<ServerConnect>().getUserFriends();
+                                context.read<ServerConnect>().getFriendRequest();
+                              });
                               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                 content: Text('Friend request accepted'),
                               ));
@@ -89,9 +91,11 @@ class _MyFriendsPageState extends State<MyFriendsPage> {
                           InkWell(
                             onTap: () {
                               context.read<ServerConnect>().answerFriendRequest(context.read<ServerConnect>().friendRequests[index].id, "false");
-                              context.read<ServerConnect>().getUserConversations();
-                              context.read<ServerConnect>().getUserFriends();
-                              context.read<ServerConnect>().getFriendRequest();
+                              Future.delayed(const Duration(seconds: 1), () {
+                                context.read<ServerConnect>().getUserConversations();
+                                context.read<ServerConnect>().getUserFriends();
+                                context.read<ServerConnect>().getFriendRequest();
+                              });
                               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                 content: Text('Friend request declined'),
                               ));
