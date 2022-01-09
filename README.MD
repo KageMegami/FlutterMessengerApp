@@ -8,27 +8,25 @@ Our project, the Personna Messenger App, is an app based on Messenger from Faceb
 
 ## Architecture
 
-All the clients request are sent using http requests to our PostgreSQL Database hosted on an OVH VPS. The login functions are managed via Firebase authentication and Server - Client message are managed by Firebase Messaging. 
+The client app login using Firebase authentication and the token received is used to request the server.
+All the clients requests are sent using http requests to our NodeJS server hosted on an OVH VPS and linked to a PostgreSQL database.
+The server send message to the clients using Firebase Cloud Messaging. 
 
 ## External Libraries
 
-The following libraries have been chosen because we either knew how to work with them or because we did not want to recode some of their functions.
-
 **Mobile**
- - Firebase Core : https://pub.dev/packages/firebase_core
+ - Firebase Core : https://pub.dev/packages/firebase_core               All the firebase library are use to connect to the different firebase service
  - Firebase Auth : https://pub.dev/packages/firebase_auth
  - Firebase Storage : https://pub.dev/packages/firebase_storage
  - Firebase Messaging : https://pub.dev/packages/firebase_messaging
- - Provider : https://pub.dev/packages/provider
- - Cupertino Icons : https://pub.dev/packages/cupertino_icons
- - HTTP : https://pub.dev/packages/http
- - Image Picker : https://pub.dev/packages/image_picker
- - Image Cropper : https://pub.dev/packages/image_cropper
+ - Provider : https://pub.dev/packages/provider                         This is used for our global state management
+ - HTTP : https://pub.dev/packages/http                                 Allow to make http request to our server
+ - Image Picker : https://pub.dev/packages/image_picker                 Used to pick image from the galery
+ - Image Cropper : https://pub.dev/packages/image_cropper               Used to crop picked image
 
 **Server**
- - NodeJS : https://nodejs.org/en/
- - NestJS : https://nestjs.com/
- - TypeOrm : https://docs.nestjs.com/techniques/database
- - Firebase Auth : https://firebase.google.com/docs/auth?authuser=0
- - Firebase Messaging : https://firebase.google.com/docs/cloud-messaging/?authuser=0#implementation_paths
- - PostgreSQL : https://www.postgresql.org/
+ - NestJS : https://nestjs.com/                                         This is the framework used for the server
+ - TypeOrm : https://docs.nestjs.com/techniques/database                This is used to manage database entities and relations
+ - Firebase Auth : https://firebase.google.com/docs/auth?authuser=0     Used to verify token send by the client to authentify request
+ - Firebase Messaging : https://firebase.google.com/docs/cloud-messaging/?authuser=0#implementation_paths      Used send message and notification to client app
+ - PostgreSQL : https://www.postgresql.org/                             Progresql is the database used in this project
